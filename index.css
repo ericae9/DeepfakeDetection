@@ -42,12 +42,21 @@
 }
 
 .links p {
-	margin-left: 5%;
+	padding-left: 5%;
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
 
 a {
 	text-decoration: none;
+}
+
+.links a {
 	color: #d7d8d9;
+}
+
+.links p:hover:not(.selected) {
+	background-color: #8b8b8c;
 }
 
 body {
@@ -89,4 +98,12 @@ video {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10%;
+}
+
+.selected a {
+	color: #323333;
+}
+
+.selected {
+	background-color: #fafafa;
 }
