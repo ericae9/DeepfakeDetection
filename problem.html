@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+ 	<head>
+		<title>Deepfake Detection</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+  
+	<body>
+		<div class="container">
+			<div class="left-side">
+				<div class="basic-info">
+					<h3>CSE 599 G1 Deep Learning Project</h3>
+					<h4>Erica Eaton<br />Pirouz Naghavi</h4>
+				</div>
+				<div class="links">
+					<p><a href="index.html">Overview</a></p>
+					<p class="selected"><a href="problem.html">Problem</a></p>
+					<p><a href="relatedwork.html">Related Work</a></p>
+					<p><a href="methods.html">Methods and Algorithms</a></p>
+					<p><a href="experiments.html">Experiments and Evaluation</a></p>
+					<p><a href="results.html">Results</a></p>
+					<p><a href="conclusion.html">Conclusion</a></p>
+					<p><a href="demo.html">Demo</a></p>
+					<p><a href="references.html">References</a></p>
+				</div>
+			</div>
+			<div class="main-content">
+				<h1>Deepfake Video Detection with Convolutional and Recurrent Networks</h1>
+				<h2 class="first-h2">Problem Statement</h2>
+				<p>
+					Recent advances in deep learning have led to the development and
+					 growing frequency of deepfakes. A deepfake is any video, audio, or
+					 image that has been altered or generated using deep learning methods
+					 <a href="https://www.theguardian.com/technology/2020/jan/13/what-are-deepfakes-and-how-can-you-spot-them" target="_blank">[2]</a>.
+					 An example is the series of pictures below, where the Mona
+					 Lisa has been given different facial expressions and head positions.
+				</p>
+				<img src="monalisadeepfake.png" alt="Deepfake of Mona Lisa" />
+				<p class="figure-title">
+					Deepfake of the Mona Lisa
+					 <a href="https://www.cnet.com/news/samsung-ai-deepfake-can-fabricate-a-video-of-you-from-a-single-photo-mona-lisa-cheapfake-dumbfake/" target="_blank">[3]</a>
+				</p>
+				<p>
+					Deepfakes have many positive applications, including image enhancement
+					 and helping people who lost their voice due to illness
+					 <a href="https://www.theguardian.com/technology/2020/jan/13/what-are-deepfakes-and-how-can-you-spot-them" target="_blank">[2]</a>,
+					 to name only a few. However, there are malicious applications of deepfakes,
+					 such as politically motivated misinformation and corporate sabotage. These
+					 often take the form of a video that falsely portrays the subject saying or
+					 doing something that damages their public image. Thus, we aim to detect deepfake
+					 videos to help neutralize the negative effects of deepfakes. Specifically, our
+					 approach is to apply deep learning methods, including convolutional neural networks
+					 (CNNs) and long short-term memory networks (LSTMs) to determine whether a video from
+					 the Facebook Deepfake Detection Challenge dataset
+					 <a href="https://www.kaggle.com/c/deepfake-detection-challenge/data" target="_blank">[1]</a>
+					 is real or fake. In addition, multiple network architectures were analyzed to determine which
+					 model and corresponding architecture produce the highest accuracy for detecting deepfakes.
+					 Further, selecting the highest performing models and adding them to an ensemble could result
+					 in higher accuracy than that attained with any individual model.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
