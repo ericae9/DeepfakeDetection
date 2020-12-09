@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+ 	<head>
+		<title>Deepfake Detection</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+  
+	<body>
+		<div class="container">
+			<div class="left-side">
+				<div class="basic-info">
+					<h3>CSE 599 G1 Deep Learning Project</h3>
+					<h4>Erica Eaton<br />Pirouz Naghavi</h4>
+				</div>
+				<div class="links">
+					<p><a href="index.html">Overview</a></p>
+					<p><a href="problem.html">Problem</a></p>
+					<p class="selected"><a href="relatedwork.html">Related Work</a></p>
+					<p><a href="methods.html">Methods and Algorithms</a></p>
+					<p><a href="experiments.html">Experiments and Evaluation</a></p>
+					<p><a href="results.html">Results</a></p>
+					<p><a href="conclusion.html">Conclusion</a></p>
+					<p><a href="demo.html">Demo</a></p>
+					<p><a href="references.html">References</a></p>
+				</div>
+			</div>
+			<div class="main-content">
+				<h1>Deepfake Video Detection with Convolutional and Recurrent Networks</h1>
+				<h2 class="first-h2">Related Work</h2>
+				<p>
+					Prior research has examined different methods for detecting deepfake videos. Guera and Delp
+					 <a href="https://engineering.purdue.edu/~dgueraco/content/deepfake.pdf" target="_blank">[4]</a>
+					 create a convolutional LSTM model, where a CNN is used to extract features from the frames of
+					 each video and the result is fed into an LSTM to process the sequence of frames and predict
+					 whether the video is real or a deepfake. Lima et al.
+					 <a href="https://arxiv.org/abs/2006.14749" target="_blank">[5]</a> also use a convolutional
+					 LSTM model to detect deepfake videos, but found that a 3D CNN model far outperformed the
+					 convolutional LSTM, achieving over 20% higher accuracy. Although the ideas and models presented
+					 in these papers served as inspiration for the models we developed, other work has focused on
+					 different approaches to deepfake video detection.
+					<br />
+					<br />
+					Mittal et al. <a href="https://arxiv.org/abs/2003.06711" target="_blank">[6]</a> extract face
+					 and speech features from videos and input those features for a real video and a fake video of
+					 the same subject to two CNNs, one for face features and another for speech features. In practice,
+					 this could be an effective method of detecting deepfake videos because, in reality, both the audio
+					 and visual appearance of a deepfake video are typically altered. However, only the appearance of
+					 people’s faces in the videos in the Facebook Deepfake Detection Challenge dataset
+					 <a href="https://www.kaggle.com/c/deepfake-detection-challenge/data" target="_blank">[1]</a>
+					 have been altered, not the audio.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
