@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+ 	<head>
+		<title>Deepfake Detection</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+  
+	<body>
+		<div class="container">
+			<div class="left-side">
+				<div class="basic-info">
+					<h3>CSE 599 G1 Deep Learning Project</h3>
+					<h4>Erica Eaton<br />Pirouz Naghavi</h4>
+				</div>
+				<div class="links">
+					<p><a href="index.html">Overview</a></p>
+					<p><a href="problem.html">Problem</a></p>
+					<p><a href="relatedwork.html">Related Work</a></p>
+					<p class="selected"><a href="dataset.html">Dataset and Data Processing</a></p>
+					<p><a href="methods.html">Methods and Algorithms</a></p>
+					<p><a href="experiments.html">Experiments and Evaluation</a></p>
+					<p><a href="results.html">Results</a></p>
+					<p><a href="conclusion.html">Conclusion</a></p>
+					<p><a href="demo.html">Demo</a></p>
+					<p><a href="references.html">References</a></p>
+				</div>
+			</div>
+			<div class="main-content">
+				<h1>Deepfake Video Detection with Convolutional and Recurrent Networks</h1>
+				<h2 class="first-h2">Dataset and Data Processing</h2>
+				<p>
+					The dataset for this project is the Facebook Deepfake Detection Challenge dataset
+					 <a href="https://www.kaggle.com/c/deepfake-detection-challenge/data" target="_blank">[1]</a>,
+					 which has over 100,000 videos of people, where some are altered using 8 different algorithms
+					 to modify the appearance of people’s faces in the video. This dataset is uneven in that the
+					 number of fake videos does not equal the number of real videos. Specifically, there are
+					 approximately eight fake videos for each real video in the dataset. However, there was
+					 consistency in the length of each video, as each video was exactly ten seconds. In addition,
+					 the videos had a similar frame rate to the color NTCS videos with 29.97 frames per second for each video.
+					<br />
+					<br />
+					One of the most challenging aspects to processing this dataset was reducing the size of the dataset
+					 from approximately 500GB to a size that is manageable for training deep neural networks. In order to
+					 reduce the size of the dataset, the number of frames per video, which was originally about 300,
+					 was reduced to 32, decreasing the frame rate to approximately 3 frames per second. To further reduce
+					 the size of the dataset, the size of each frame was decreased as well. OpenCV was used to extract and
+					 resize each of the 32 frames from each video. Since the deepfake algorithms used to generate the dataset
+					 are applied to the faces of the people in the videos, the pixels in each frame that carry the most useful
+					 information are those in and around the faces of the people in the videos. This was confirmed after randomly
+					 selecting and watching a number of videos from the dataset.
+					<br />
+					<br />
+					Extracting faces of people in each video frame is a traditional computer vision task for which there are
+					 a variety of solutions available. Initially, utilizing OpenCV to detect faces appeared to be the most
+					 straightforward solution, but this method did not reliably detect faces when the frames were dark or
+					 the people in the videos were turned sideways. Instead, a neural network face detector model, MTCNN,
+					 was used to detect faces in each video frame <a href="https://github.com/ipazc/mtcnn" target="_blank">[7]</a>.
+					 This API outputs a JSON file with the following information for each face detected in the frame: the probability
+					 that the detected area on the frame is a face, the starting coordinates of this area, the width of the detected
+					 area, and the height of the detected area. After running this model on a number of videos, it was clear that
+					 the detected faces with a probability less than 95% were not reliable and therefore should be ignored. This
+					 would cause each processed video to have an unequal number of frames, some with 32 frames and others with less
+					 than 32 frames, which would be quite problematic for deep neural network models during training. In order to
+					 avoid this issue, when not all detected faces were reliable for a video, some frames were duplicated, while
+					 still keeping the sequence intact, to maintain the same total number of frames for each video, while discarding
+					 videos with less than one frame per second of reliably extracted faces. Effectively, this caused videos that
+					 were too dark to reliably detect a person’s face to be removed. It is worth noting that the faces on most dark
+					 videos were reliably detected by the API and only a small subset of the dark videos were discarded, which,
+					 we discovered, only occurred when the videos were too dark.  In addition, videos with more than one person
+					 were also removed due to computational resource constraints. However, deepfake videos with more than one
+					 person could be detected by only modifying the aforementioned data processing pipeline, without changing the models.
+					<br />
+					<br />
+					Utilizing all other information provided in the JSON file, we cropped each frame to create an image with the
+					 face at the center and a small margin around the face to include the surrounding pixels. The resulting image
+					 was then resized to be 32 by 32. Thus, processing a single video yielded a series of 32 by 32 images, one for
+					 each of the 32 frames, of the face of the person in the video. Applying this process to each video in the dataset
+					 took over 2 days using 35 CPUs and 3 GPUs.
+					<br />
+					<br />
+					Finally, we randomly sampled the processed dataset to create datasets with an even number of real and fake videos
+					 for training and testing our deep models. To create these balanced datasets, we included every real video and
+					 randomly sampled an equal number of fake videos from the much larger group of fake videos. Due to memory
+					 limitations, we split the resulting datasets into equal-sized pieces. This resulted in having multiple datasets
+					 to train our model on, where each one included a different subset of the fake videos.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
