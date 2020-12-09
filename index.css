@@ -159,3 +159,11 @@ table, th, td {
 .confusion-matrix {
 	width: 95%;
 }
+
+.italic {
+	font-style: italic;
+}
+
+li {
+	padding-bottom: 1%;
+}
