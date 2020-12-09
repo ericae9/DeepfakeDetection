@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+ 	<head>
+		<title>Deepfake Detection</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+  
+	<body>
+		<div class="container">
+			<div class="left-side">
+				<div class="left-container">
+					<div class="basic-info">
+						<h3>CSE 599 G1 Deep Learning Project</h3>
+						<h4>Erica Eaton<br />Pirouz Naghavi</h4>
+					</div>
+					<div class="links">
+						<p><a href="index.html">Overview</a></p>
+						<p><a href="problem.html">Problem</a></p>
+						<p><a href="relatedwork.html">Related Work</a></p>
+						<p><a href="dataset.html">Dataset and Data Processing</a></p>
+						<p><a href="methods.html">Methods and Algorithms</a></p>
+						<p class="selected"><a href="experiments.html">Experiments and Evaluation</a></p>
+						<p><a href="results.html">Results</a></p>
+						<p><a href="conclusion.html">Conclusion</a></p>
+						<p><a href="demo.html">Demo</a></p>
+						<p><a href="references.html">References</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="main-content">
+				<h1>Deepfake Video Detection with Convolutional and Recurrent Networks</h1>
+				<h2 class="first-h2">Experiments and Evaluation</h2>
+				<p>
+					Each model was trained on one piece of the dataset at a time, decreasing the learning
+					 rate over time. Once each model reached a certain accuracy, which we found to be about
+					 82% for the 3D CNN and 78% for the CNN-LSTM, for a single piece of the dataset, we trained
+					 each model on the next piece of the dataset. As each model was trained on additional pieces
+					 of the dataset, we noticed that the performance of both models improved. It is worth noting
+					 that the models were initially trained on the uneven dataset, but the models did not appear
+					 to be learning. Using balanced datasets instead of the uneven dataset yielded much better
+					 performance for the models.
+					<br />
+					<br />
+					During training, the Adam optimizer was utilized, resulting in a faster training process than
+					 using SGD. In addition, binary cross entropy with logits was used as the loss function since
+					 predicting whether a video is real or fake is a binary classification problem. To improve each
+					 model’s performance during training, we also tuned various parameters, including batch size,
+					 learning rate, and weight decay. However, we found that changing the batch size did not improve
+					 the models’ performance. After tuning, the final hyperparameter settings for the 3D CNN were a
+					 batch size of 64, weight decay of 0.0001, and initial learning rate of 0.0005, which was decreased
+					 to 0.0002 and then 0.0001 to reduce oscillation in the loss. The final hyperparameter settings for
+					 the CNN-LSTM were a batch size of 32, weight decay of 0.0005, and initial learning rate of 0.0005,
+					 which was decreased to 0.0002 and then 0.0001.
+					<br />
+					<br />
+					To evaluate the results of the trained models, we will examine the accuracy with which the models
+					 predict whether videos are real or fake on a test dataset, in addition to creating confusion matrices
+					 of the results for the test dataset. To create the training and test datasets, we used an 80-20 split,
+					 with 80% of the videos added to the training datasets and the remaining 20% of the videos added to the
+					 test dataset. Further, both the training and test datasets have an even split of real and fake videos
+					 to ensure our results are not biased.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
