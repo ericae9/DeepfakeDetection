@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+ 	<head>
+		<title>Deepfake Detection</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+  
+	<body>
+		<div class="container">
+			<div class="left-side">
+				<div class="left-container">
+					<div class="basic-info">
+						<h3>CSE 599 G1 Deep Learning Project</h3>
+						<h4>Erica Eaton<br />Pirouz Naghavi</h4>
+					</div>
+					<div class="links">
+						<p><a href="index.html">Overview</a></p>
+						<p><a href="problem.html">Problem</a></p>
+						<p><a href="relatedwork.html">Related Work</a></p>
+						<p><a href="dataset.html">Dataset and Data Processing</a></p>
+						<p><a href="methods-algorithms.html">Methods and Algorithms</a></p>
+						<p><a href="experiments.html">Experiments and Evaluation</a></p>
+						<p><a href="results.html">Results</a></p>
+						<p><a href="conclusion.html">Conclusion</a></p>
+						<p class="selected"><a href="demo.html">Demo</a></p>
+						<p><a href="references.html">References</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="main-content">
+				<h1>Deepfake Video Detection with Convolutional and Recurrent Networks</h1>
+				<h2 class="first-h2">Demo</h2>
+				<p>
+					Below is a video demoing our project. In the demo, we process and classify two
+					 videos, one real video and one fake video. First, we run the two videos through
+					 our preprocessing code, which takes 32 frames from each video (about 3 frames
+					 per second), extracts a person's face from each of those frames, crops the frame
+					 to only include the person's face (with a small margin around the face), and resizes
+					 each frame to be 32 by 32. The data for each video, which is a tuple containing the
+					 32 processed frames and the label, real or fake, for the video is saved in a pickle
+					 file. This pickle file is then uploaded to Google Drive and read by our Google Colab
+					 iPython notebook, which contains the code to create, train, and evaluate our models
+					 (3D CNN, CNN-LSTM, and ensemble). Using our ensemble model to classify the two
+					 videos, we observe that both videos are classified correctly.
+				</p>
+				<video controls class="demo">
+					<source src="demo.mp4" type="video/mp4">
+				</video>
+			</div>
+		</div>
+	</body>
+</html>
